@@ -47,4 +47,9 @@ public class PortalCamera : MonoBehaviour
             transform.rotation = Quaternion.LookRotation(newCameraDirection, Vector3.up);
         }
     }
+
+    public void SetMyAngle(float angle)
+    {
+        myAngle = angle;
+    }
 }
