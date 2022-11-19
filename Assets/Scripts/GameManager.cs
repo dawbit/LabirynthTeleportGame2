@@ -99,17 +99,20 @@ public class GameManager : MonoBehaviour
     public void AddPoints(int point) 
     {
         points += point;
+        Debug.Log("ADD POINTS");
     }
 
     public void AddTime(int addTime) 
     {
         timeToEnd += addTime;
+        Debug.Log("ADD TIME");
     }
 
     public void FreezTime(int freez) 
     {
         CancelInvoke("Stopper");
         InvokeRepeating("Stopper", freez, 1);
+        Debug.Log("FREEZE TIME");
     }
 
     public void AddKey(KeyColor color)
@@ -117,12 +120,15 @@ public class GameManager : MonoBehaviour
         if (color == KeyColor.Gold)
         {
             goldKey++;
+            Debug.Log("Added gold key");
         } else if (color == KeyColor.Green)
         {
             greenKey++;
+            Debug.Log("Added green key");
         } else if (color == KeyColor.Red)
         {
             redKey++;
+            Debug.Log("Added red key");
         }
     }
 

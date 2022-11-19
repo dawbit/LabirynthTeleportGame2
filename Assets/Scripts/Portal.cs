@@ -22,7 +22,7 @@ public class Portal : MonoBehaviour
         portalTeleport = myCollidPlane.gameObject.GetComponent<PortalTeleport>();
         player = GameObject.FindGameObjectWithTag("Player");
 
-        portalCamera.playerCamera = portalCamera.playerCamera;
+        portalCamera.playerCamera = player.gameObject.transform.GetChild(0);
         portalCamera.otherPortal = otherPortal.transform;
         portalCamera.portal = this.transform;
 
