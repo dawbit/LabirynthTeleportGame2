@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Lock : MonoBehaviour
 {
@@ -19,6 +20,10 @@ public class Lock : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (iCanOpen && !locked)                                            //<-------
+        {                                                                   //<-------
+            GameManager.gameManager.SetUseInfo("Press E to open lock");     //<-------
+        }                                                                   //<-------
         if (Input.GetKeyDown(KeyCode.E) && !locked && iCanOpen) 
         {
             key.SetBool("useKey", CheckTheKey());
@@ -38,18 +43,21 @@ public class Lock : MonoBehaviour
         if (GameManager.gameManager.redKey > 0 && myColor == KeyColor.Red) 
         {
             GameManager.gameManager.redKey--;
+            GameManager.gameManager.redKeyText.text = GameManager.gameManager.redKey.ToString();  //<-------
             locked = true;
             return true;
         }
         else if (GameManager.gameManager.greenKey > 0 && myColor == KeyColor.Green) 
         {
             GameManager.gameManager.greenKey--;
+            GameManager.gameManager.greenKeyText.text = GameManager.gameManager.greenKey.ToString();  //<-------
             locked = true;
             return true;
         }
         else if (GameManager.gameManager.goldKey > 0 && myColor == KeyColor.Gold) 
         {
             GameManager.gameManager.goldKey--;
+            GameManager.gameManager.goldKeyText.text = GameManager.gameManager.goldKey.ToString();  //<-------
             locked = true;
             return true;
         }
@@ -66,6 +74,7 @@ public class Lock : MonoBehaviour
         {
             iCanOpen = true;
             Debug.Log("You Can Use Lock");
+            GameManager.gameManager.SetUseInfo(""); //<-------
         }
     }
 
